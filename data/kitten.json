@@ -1,0 +1,3 @@
+[{"id":"1", "name":"Pushok", "image":"Pushok.jpg", "power":"4", "speed":"55"}, 
+{"id":"2", "name":"Kira", "image":"Kira.jpg", "power":"6", "speed":"80"},
+{"id":"3", "name":"Simona", "image":"Simona.jpg", "power":"10", "speed":"70"}]
