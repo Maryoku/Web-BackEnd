@@ -20,8 +20,8 @@ class kittenController extends Controller {
 				$dataToSave=array(
 					'id'=>$_POST['id'], 
 					'name'=>$_POST['name'],
-					'image'=>$_POST['name'],
-					'power'=>$_POST['name'],
+					'image'=>$_POST['image'],
+					'power'=>$_POST['power'],
 					'speed'=>$_POST['score']);
 				
 				$addedItem=$this->model->create($dataToSave);
@@ -50,6 +50,6 @@ class kittenController extends Controller {
 	
 	public function delete($data) {
 		$example = $this->model->delete($data['id']);
-        $this->setResponce($example);
+        $this->setResponce($delItem);
 	}
 }

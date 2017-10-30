@@ -37,6 +37,6 @@ class userController extends Controller {
 	
 	public function delete($data) {
 		$example = $this->model->delete($data['id']);
-        $this->setResponce($example);
+        $this->setResponce($delItem);
 	}
 }
