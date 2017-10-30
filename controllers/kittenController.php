@@ -40,8 +40,8 @@ class kittenController extends Controller {
 			$dataToUpd=array(
 					'id'=>$_POST['id'], 
 					'name'=>$_POST['name'],
-					'image'=>$_POST['name'],
-					'power'=>$_POST['name'],
+					'image'=>$_POST['image'],
+					'power'=>$_POST['power'],
 					'speed'=>$_POST['score']);
 			$updItem=$this->model->save($dataToUpd, $data['id']);
 			$this->setResponce($updItem);
