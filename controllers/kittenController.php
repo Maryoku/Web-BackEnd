@@ -3,16 +3,18 @@
 class kittenController extends Controller {
 	
 	public function index() {
-		$examples=$this->model->load();
-        $this->setResponce($examples);
+		$kittens=$this->model->load();
+        $this->setResponce($kittens);
 	}
 	
 	public function view($data) {
-		$example=$this->model->load($data['id']);
-        $this->setResponce($example);
+		$kitten=$this->model->load($data['id']);
+        $this->setResponce($kitten);
 	}
 	
 	public function add() {
+		
+		$_POST=json_decode(file_get_contents('php://input'), true);
 		
 		if( (isset($_POST['id'])) && (isset($_POST['name'])) && (isset($_POST['image'])) 
 			&& (isset($_POST['power'])) && (isset($_POST['speed'])) ) {
@@ -22,7 +24,7 @@ class kittenController extends Controller {
 					'name'=>$_POST['name'],
 					'image'=>$_POST['image'],
 					'power'=>$_POST['power'],
-					'speed'=>$_POST['score']);
+					'speed'=>$_POST['speed']);
 				
 				$addedItem=$this->model->create($dataToSave);
 				$this->setResponce($addedItem);
@@ -31,7 +33,7 @@ class kittenController extends Controller {
 	
 	public function edit($data) {
 		
-		$_PUT=json_decode(file_get_contents('php://input'));
+		$_PUT=json_decode(file_get_contents('php://input'), true);
 		
 		if( (isset($_POST['id'])) && (isset($_POST['name'])) && (isset($_POST['image'])) 
 			&& (isset($_POST['power'])) && (isset($_POST['speed'])) ) {
@@ -42,14 +44,14 @@ class kittenController extends Controller {
 					'name'=>$_POST['name'],
 					'image'=>$_POST['image'],
 					'power'=>$_POST['power'],
-					'speed'=>$_POST['score']);
-			$updItem=$this->model->save($dataToUpd, $data['id']);
+					'speed'=>$_POST['speed']);
+			$updItem=$this->model->save($data['id'], $dataToUpd);
 			$this->setResponce($updItem);
 			}
 	}
 	
 	public function delete($data) {
-		$example = $this->model->delete($data['id']);
+		$delItem = $this->model->delete($data['id']);
         $this->setResponce($delItem);
 	}
 }
